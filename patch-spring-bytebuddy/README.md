@@ -97,6 +97,25 @@ name: G1 Old Generation	 count:0	 took:0	 pool name:[G1 Eden Space, G1 Survivor 
 16:53:30.731 [http-nio-8080-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
 ```
 
+```
+[0]cn.nickdlk.patchspring.interceptor.LicenseInterceptor.preHandle(entry)  
+[1]cn.nickdlk.patchspring.interceptor.LicenseInterceptor.preHandle(exit)  
+[2]cn.nickdlk.patchspring.controller.testController.sayHello(entry)  
+[3]cn.nickdlk.patchspring.service.DemoService.sayHello(entry)  
+[4]cn.nickdlk.patchspring.dao.User.setName(entry)  
+[5]cn.nickdlk.patchspring.dao.User.setName(exit)  
+[6]cn.nickdlk.patchspring.service.DemoService.sayHello(exit)  
+[7]cn.nickdlk.patchspring.controller.testController.sayHello(exit)  
+[8]cn.nickdlk.patchspring.dao.User.toString(entry)  
+[9]cn.nickdlk.patchspring.dao.User.getName(entry)  
+[10]cn.nickdlk.patchspring.dao.User.getName(exit)  
+[11]cn.nickdlk.patchspring.dao.User.toString(exit)  
+[12]cn.nickdlk.patchspring.dao.User.getName(entry)  
+[13]cn.nickdlk.patchspring.dao.User.getName(exit)  
+```
+
+这个日志可以优化一下，增加层级和时间，就可以知道整条调用链路了
+
 # 参考
 
 LogAdvice： https://blog.csdn.net/who7708/article/details/113185883

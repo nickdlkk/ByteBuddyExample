@@ -59,5 +59,8 @@ public class TrackManager {
         return stack.peek();
     }
 
+    public static boolean isExistSpan() {
+        return track.get() != null && track.get().isEmpty();
+    }
 
 }

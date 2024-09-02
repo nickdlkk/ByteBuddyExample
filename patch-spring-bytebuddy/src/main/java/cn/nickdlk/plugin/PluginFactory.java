@@ -1,8 +1,7 @@
 package cn.nickdlk.plugin;
 
 
-import cn.nickdlk.plugin.impl.jvm.JvmPlugin;
-import cn.nickdlk.plugin.impl.link.LinkPlugin;
+import cn.nickdlk.plugin.impl.linkLog.LinkLogPlugin;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,9 +18,10 @@ public class PluginFactory {
 
     static {
         //链路监控
-        pluginGroup.add(new LinkPlugin());
+//        pluginGroup.add(new LinkPlugin());
+        pluginGroup.add(new LinkLogPlugin());
         //Jvm监控
-        pluginGroup.add(new JvmPlugin());
+//        pluginGroup.add(new JvmPlugin());
     }
 
 }
