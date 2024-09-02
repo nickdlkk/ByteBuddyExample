@@ -1,5 +1,8 @@
 package cn.nickdlk;
 
+import cn.nickdlk.plugin.IPlugin;
+import cn.nickdlk.plugin.InterceptPoint;
+import cn.nickdlk.plugin.PluginFactory;
 import net.bytebuddy.agent.builder.AgentBuilder;
 import net.bytebuddy.asm.Advice;
 import net.bytebuddy.description.type.TypeDescription;
@@ -10,6 +13,7 @@ import net.bytebuddy.utility.JavaModule;
 import org.springframework.scheduling.annotation.Scheduled;
 
 import java.lang.instrument.Instrumentation;
+import java.util.List;
 
 
 /**
@@ -18,6 +22,8 @@ import java.lang.instrument.Instrumentation;
 public class SpringAgent {
     public static void premain(String agentArgs, Instrumentation inst) {
         System.out.println("Spring Agent Loaded");
+        AgentBuilder agentBuilder = new AgentBuilder.Default();
+
         AgentBuilder.Transformer transformer = (builder, typeDescription, classLoader, javaModule, protectionDomain) -> {
             // 演示1 跳过拦截器
             if (typeDescription.getName().equals("cn.nickdlk.patchspring.interceptor.LicenseInterceptor")) {
@@ -30,7 +36,7 @@ public class SpringAgent {
             builder = builder.method(ElementMatchers.isAnnotatedWith(Scheduled.class)) // 指定注解类,需要引入Spring的包来使用,可以通过其他方式指定
                     .intercept(MethodDelegation.to(AnnotatedInterceptor.class));
 
-            // 演示3 对Controller增加额外返回
+            // 演示3 对Controller增加额外响应头返回
             if (typeDescription.getName().startsWith("cn.nickdlk.patchspring.controller")) {
                 builder = builder.visit(Advice
                         .to(LogAdvice.class)
@@ -45,6 +51,20 @@ public class SpringAgent {
             }
             return builder;
         };
+
+        // 演示4 链路追踪和JVM监控
+        List<IPlugin> pluginGroup = PluginFactory.pluginGroup;
+        for (IPlugin plugin : pluginGroup) {
+            InterceptPoint[] interceptPoints = plugin.buildInterceptPoint();
+            for (InterceptPoint point : interceptPoints) {
+
+                AgentBuilder.Transformer transformerPlugin = (builder, typeDescription, classLoader, javaModule, protectionDomain) -> {
+                    builder = builder.visit(Advice.to(plugin.adviceClass()).on(point.buildMethodsMatcher()));
+                    return builder;
+                };
+                agentBuilder = agentBuilder.type(point.buildTypesMatcher()).transform(transformerPlugin);
+            }
+        }
 
         AgentBuilder.Listener listener = new AgentBuilder.Listener() {
 
@@ -75,8 +95,7 @@ public class SpringAgent {
             }
         };
 
-        new AgentBuilder
-                .Default()
+        agentBuilder
                 .type(ElementMatchers.isPublic())
                 .transform(transformer)
                 .with(listener)
