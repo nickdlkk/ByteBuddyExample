@@ -22,6 +22,8 @@ import java.util.List;
 public class SpringAgent {
     public static void premain(String agentArgs, Instrumentation inst) {
         System.out.println("Spring Agent Loaded");
+        AgentConfig.initialize(agentArgs);
+
         AgentBuilder agentBuilder = new AgentBuilder.Default();
 
         AgentBuilder.Transformer transformer = (builder, typeDescription, classLoader, javaModule, protectionDomain) -> {
@@ -53,6 +55,7 @@ public class SpringAgent {
         };
 
         // 演示4 链路追踪和JVM监控
+        PluginFactory.init(AgentConfig.getValue(AgentConfigMapKey.ENV_PLUGINS));
         List<IPlugin> pluginGroup = PluginFactory.pluginGroup;
         for (IPlugin plugin : pluginGroup) {
             InterceptPoint[] interceptPoints = plugin.buildInterceptPoint();

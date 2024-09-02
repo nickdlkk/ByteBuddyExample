@@ -2,6 +2,13 @@
 
 执行package生成jar包，在path-spring启动时增加VM Options
 
+VM Options:`-javaagent:D:\ByteBuddyExample\patch-spring-bytebuddy\target\patch-spring-bytebuddy-1.0-SNAPSHOT.jar`
+
+参数：`-javaagent:xx.jar=[option1]=[value1],[option2]=[value2,value3]`
+
+example:
+`-javaagent:D:\ByteBuddyExample\patch-spring-bytebuddy\target\patch-spring-bytebuddy-1.0-SNAPSHOT.jar=plugins=link,linkLog,jvm`
+
 # 预期结果
 
 ## 跳过了权限校验

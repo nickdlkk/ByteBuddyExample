@@ -11,3 +11,5 @@ JDK17
 patch-spring SpringBoot工程
 
 patch-spring-bytebuddy 生成agent包，对Spring工程进行修改
+
+详情见：[patch-spring-bytebuddy/README.md](patch-spring-bytebuddy/README.md)
