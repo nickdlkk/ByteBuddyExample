@@ -1,3 +1,5 @@
+package cn.nickdlk.test;
+
 import com.sun.tools.attach.VirtualMachine;
 import com.sun.tools.attach.VirtualMachineDescriptor;
 import com.taobao.arthas.common.AnsiLog;

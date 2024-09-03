@@ -2,7 +2,8 @@
 
 这种方式跟bytebuddy没有关系，使用的是com.sun.tools.attach包下的VirtualMachine工具类。
 
-先打包成jar包，再用[test](src/test/java/attach.java)里的方法向Spring演示项目注入。（Spring项目先启动，不需要配置VM Options）
+先打包成jar包，再用[test](src/test/java/cn/nickdlk/test/attach.java)里的方法向Spring演示项目注入。（Spring项目先启动，不需要配置VM
+Options）
 
 ## 入口
 
@@ -24,4 +25,4 @@ https://www.sitepoint.com/fixing-bugs-in-running-java-code-with-dynamic-attach/
 
 参考 https://github.com/raphw/byte-buddy/blob/master/byte-buddy-agent/src/test/java/net/bytebuddy/agent/VirtualMachineAttachmentTest.java
 
-使用Bytebuddy的工具类，
+使用Bytebuddy的工具类，生成jar包并且attach到spring： [cn.nickdlk.test.byteBuddyAttachTest.testAttachSpring](src/test/java/cn/nickdlk/test/byteBuddyAttachTest.java)
