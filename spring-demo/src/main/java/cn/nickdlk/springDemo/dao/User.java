@@ -1,4 +1,4 @@
-package cn.nickdlk.patchspring.dao;
+package cn.nickdlk.springDemo.dao;
 
 import lombok.Data;
 

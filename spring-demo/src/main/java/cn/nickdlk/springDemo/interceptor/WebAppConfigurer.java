@@ -1,4 +1,4 @@
-package cn.nickdlk.patchspring.interceptor;
+package cn.nickdlk.springDemo.interceptor;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,10 +13,10 @@ public class WebAppConfigurer implements WebMvcConfigurer {
         return new LicenseInterceptor();
     }
 
-     @Override
-     public void addInterceptors(InterceptorRegistry registry) {
-         registry.addInterceptor(licenseInterceptor()).addPathPatterns("/**");
-     }
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(licenseInterceptor()).addPathPatterns("/**");
+    }
 
 
 }

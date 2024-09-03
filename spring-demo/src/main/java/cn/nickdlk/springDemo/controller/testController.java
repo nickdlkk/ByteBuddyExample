@@ -1,7 +1,7 @@
-package cn.nickdlk.patchspring.controller;
+package cn.nickdlk.springDemo.controller;
 
-import cn.nickdlk.patchspring.dao.User;
-import cn.nickdlk.patchspring.service.IDemoService;
+import cn.nickdlk.springDemo.dao.User;
+import cn.nickdlk.springDemo.service.IDemoService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;

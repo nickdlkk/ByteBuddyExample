@@ -24,7 +24,7 @@ public class LinkLogPlugin implements IPlugin {
                 new InterceptPoint() {
                     @Override
                     public ElementMatcher<TypeDescription> buildTypesMatcher() {
-                        return ElementMatchers.nameStartsWith("cn.nickdlk.patchspring");
+                        return ElementMatchers.nameStartsWith("cn.nickdlk.springDemo");
                     }
 
                     @Override

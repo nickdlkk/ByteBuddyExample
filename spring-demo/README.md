@@ -13,4 +13,4 @@ http://localhost:8080/cron
 
 # 拦截器
 
-cn.nickdlk.patchspring.interceptor.LicenseInterceptor 返回false,拦截所有请求
+cn.nickdlk.springDemo.interceptor.LicenseInterceptor 返回false,拦截所有请求

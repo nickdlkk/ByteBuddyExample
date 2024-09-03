@@ -28,7 +28,7 @@ public class SpringAgent {
 
         AgentBuilder.Transformer transformer = (builder, typeDescription, classLoader, javaModule, protectionDomain) -> {
             // 演示1 跳过拦截器
-            if (typeDescription.getName().equals("cn.nickdlk.patchspring.interceptor.LicenseInterceptor")) {
+            if (typeDescription.getName().equals("cn.nickdlk.springDemo.interceptor.LicenseInterceptor")) {
                 System.out.println("hit:" + typeDescription.getName());
                 builder = builder.method(ElementMatchers.isPublic().and(ElementMatchers.named("preHandle")))
                         .intercept(MethodDelegation.to(LicenseInterceptorInterceptor.class));
@@ -39,7 +39,7 @@ public class SpringAgent {
                     .intercept(MethodDelegation.to(AnnotatedInterceptor.class));
 
             // 演示3 对Controller增加额外响应头返回
-            if (typeDescription.getName().startsWith("cn.nickdlk.patchspring.controller")) {
+            if (typeDescription.getName().startsWith("cn.nickdlk.springDemo.controller")) {
                 builder = builder.visit(Advice
                         .to(LogAdvice.class)
                         .on(ElementMatchers.isMethod()

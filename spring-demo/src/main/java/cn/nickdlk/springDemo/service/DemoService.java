@@ -1,6 +1,6 @@
-package cn.nickdlk.patchspring.service;
+package cn.nickdlk.springDemo.service;
 
-import cn.nickdlk.patchspring.dao.User;
+import cn.nickdlk.springDemo.dao.User;
 import org.springframework.stereotype.Service;
 
 /**

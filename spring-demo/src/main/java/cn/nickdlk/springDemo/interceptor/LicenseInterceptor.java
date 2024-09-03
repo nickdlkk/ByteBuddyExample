@@ -1,4 +1,4 @@
-package cn.nickdlk.patchspring.interceptor;
+package cn.nickdlk.springDemo.interceptor;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

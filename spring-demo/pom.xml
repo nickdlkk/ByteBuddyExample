@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>cn.nickdlk</groupId>
-    <artifactId>patch-spring</artifactId>
+    <artifactId>spring-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>patch-spring</name>
     <description>patch-spring</description>
