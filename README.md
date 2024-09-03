@@ -16,10 +16,4 @@ patch-spring-bytebuddy 生成agent包，对Spring工程进行修改
 
 ## Spring Patch Attach
 
-使用 Attach API 的方式，不需要重启就能侵入已经运行的java进程。
-
-参考: 
-
-https://www.sitepoint.com/fixing-bugs-in-running-java-code-with-dynamic-attach/
-
-[Arthas](https://github.com/alibaba/arthas/blob/master/core/src/main/java/com/taobao/arthas/core/Arthas.java)
+使用 Attach API 的方式，不需要重启\指定VM Options就能侵入已经运行的java进程。
